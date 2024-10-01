@@ -15,6 +15,8 @@
 //         },
 //       }
 //     );
+//     console.log(response,"response");
+    
 //     const data = response.data.data[symbol.toUpperCase()];
 //     // console.log("here we got response : ", response);
 //     if(!data ){

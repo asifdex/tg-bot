@@ -2,10 +2,21 @@
 //   timestamp: number;
 //   price: number;
 // }
+
 // import { ChartConfiguration, Chart } from "chart.js";
-// import { ChartJSNodeCanvas } from "chartjs-node-canvas";const createChart = async (priceHistory: PriceData[]) => {
+// import { ChartJSNodeCanvas } from "chartjs-node-canvas";
+
+// export const createChart = async (priceHistory: PriceData[]) => {
+//   // Generate x-axis labels as the index of each data point converted to string
 //   const labels = priceHistory.map(data =>
-//     new Date(data.timestamp * 1000).toLocaleTimeString() // Convert UNIX timestamp to local time
+//     new Date(data.timestamp * 1000).toLocaleTimeString("en-us",{
+//       hour: "2-digit",
+//       minute: "2-digit",
+//       hour12: false,
+//       day: "2-digit",
+//       month: "short",
+//       timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+//     })
 //   );
 //   const prices = priceHistory.map(data => data.price);
 
@@ -29,6 +40,22 @@
 //     },
 //     options: {
 //       responsive: true,
+//       scales: {
+//         x: {
+//           title: {
+//             display: true,
+//             text: 'Data Points',
+//           },
+//         },
+//         y: {
+          
+//           title: {
+//             display: true,
+//             text: 'Price in USD',
+//           },
+//           position: 'right', // Position the y-axis on the left
+//         },
+//       },
 //       plugins: {
 //         legend: {
 //           display: true,
@@ -36,20 +63,15 @@
 //         tooltip: {
 //           callbacks: {
 //             label: (tooltipItem) => {
-//               // Use a type assertion to tell TypeScript that tooltipItem.raw is a number
 //               const price = tooltipItem.raw as number; 
-//               return `$${price.toFixed(2)}`; // Adjust tooltip to display price correctly
+//               return `$${price.toFixed(2)}`; // Display price in tooltip
 //             },
 //           },
 //         },
 //       },
 //     },
-    
-    
 //   };
 
 //   const imageBuffer = await chartJSNodeCanvas.renderToBuffer(configuration);
 //   return imageBuffer;
-// };
-
-// export default createChart;
+// }; 
